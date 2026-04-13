@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://akshat-04.github.io/blinxy-website/sitemap.xml
+Sitemap: https://www.blinxy.in/sitemap.xml
