@@ -291,6 +291,26 @@ footer{padding:80px 0 36px;border-top:1px solid var(--line);margin-top:110px}
 .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid var(--line);font-size:.86rem;color:var(--ink-soft)}
 .foot-bottom .links{display:flex;gap:22px}
 @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ===== Touch devices: kill sticky hover color blocks ===== */
+@media(hover:none){
+  .nav-links a:hover{color:var(--ink-soft)}
+  .nav-links a:hover::after{width:0}
+  .nav-cta:hover{background:var(--ink);transform:none}
+  .btn:hover .arr{transform:none}
+  .btn-primary:hover{background:var(--vermilion);box-shadow:none}
+  .btn-ghost:hover{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+  .cta .btn-white:hover{background:#fff;color:var(--vermilion);transform:none}
+  .card:hover{transform:none;box-shadow:none}
+  .card:not(.feature):hover .glow{opacity:0}
+  .card.feature:hover .glow{opacity:.4}
+  .step:hover{background:transparent}
+  .step:hover .pn{-webkit-text-stroke:1.5px var(--line-strong);color:transparent}
+  .ind:hover{background:transparent;color:var(--ink);border-color:var(--line-strong);transform:none}
+  .ind:active{background:var(--vermilion);color:#fff;border-color:var(--vermilion)}
+  .foot-socials a:hover{background:transparent;color:inherit;border-color:var(--line-strong)}
+  .foot-col a:hover{color:var(--ink-soft);transform:none}
+}
 </style>
 </head>
 <body>
