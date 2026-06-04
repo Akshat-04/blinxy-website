@@ -115,29 +115,64 @@ nav.scrolled{background:rgba(240,233,219,.8);backdrop-filter:blur(16px);padding:
 .btn-ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .btn .arr{transition:transform .3s}.btn:hover .arr{transform:translateX(4px)}
 
-/* live growth engine */
-.engine{background:var(--ink);border-radius:26px;padding:24px;color:var(--paper);position:relative;overflow:hidden;box-shadow:var(--shadow);opacity:0;transform:translateY(30px) scale(.97)}
-.hero.ready .engine{opacity:1;transform:none;transition:.9s var(--ease) .25s}
-.engine::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:var(--vermilion);filter:blur(70px);opacity:.35;top:-60px;right:-40px}
-.engine .eh{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;position:relative;z-index:2}
-.engine .eh .live{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.14em;color:var(--mint);display:flex;align-items:center;gap:7px}
-.engine .eh .live i{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:pulse2 1.4s infinite}
+/* ===== HERO BRAND VISUAL ===== */
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:440px;opacity:0;transform:scale(.95)}
+.hero.ready .hero-visual{opacity:1;transform:none;transition:1s var(--ease) .3s}
+.hero-glow{position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,74,28,.28),transparent 70%);filter:blur(50px)}
+.badge-ring{position:relative;width:min(400px,82vw);aspect-ratio:1}
+.ring-text{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ring-text text{font-family:'JetBrains Mono';font-size:9px;letter-spacing:2.4px;fill:var(--ink);text-transform:uppercase}
+.badge-core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.b-mark{width:126px;height:126px;border-radius:30px;background:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px)}}
+.b-mark span{font-family:'Bricolage Grotesque';font-weight:800;font-size:5rem;letter-spacing:-.06em;color:var(--paper);line-height:1}
+.b-mark span i{color:var(--vermilion);font-style:normal}
+.chip-float{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:9px 14px;box-shadow:0 16px 34px -18px rgba(23,19,9,.55);font-size:.84rem;font-weight:500;white-space:nowrap;z-index:3}
+.chip-float b{font-family:'Bricolage Grotesque';color:var(--vermilion);font-weight:700}
+.chip-float.c1{top:4%;right:-2%;animation:floaty 5s ease-in-out infinite}
+.chip-float.c2{bottom:18%;left:-6%;animation:floaty 6s ease-in-out infinite .6s}
+.chip-float.c3{bottom:2%;right:6%;animation:floaty 5.4s ease-in-out infinite 1.1s}
+@keyframes floaty{50%{transform:translateY(-12px)}}
+@media(max-width:980px){.hero-visual{min-height:380px;margin-top:6px}.chip-float.c2{left:0}}
+
+/* ===== VOXY · AI CALLING AGENT ===== */
+.voxy-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+@media(max-width:920px){.voxy-grid{grid-template-columns:1fr;gap:36px}}
+.voxy-feats{list-style:none;margin:26px 0 30px;display:flex;flex-direction:column;gap:14px}
+.voxy-feats li{display:flex;gap:12px;align-items:flex-start;font-size:1.02rem}
+.voxy-feats .ic{flex:0 0 26px;width:26px;height:26px;border-radius:8px;background:var(--vermilion);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;margin-top:1px}
+.voxy-panel{background:var(--ink);color:var(--paper);border-radius:28px;padding:34px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.voxy-panel::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:var(--vermilion);filter:blur(80px);opacity:.3;top:-80px;right:-60px}
+.voxy-head{display:flex;align-items:center;gap:14px;position:relative;z-index:2}
+.orb{position:relative;width:84px;height:84px;flex:0 0 84px;display:flex;align-items:center;justify-content:center}
+.orb .core{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 34% 28%,#FF8A63,var(--vermilion));box-shadow:0 0 36px rgba(255,74,28,.6);animation:orbpulse 1.7s ease-in-out infinite}
+.orb .pr{position:absolute;width:54px;height:54px;border-radius:50%;border:2px solid rgba(255,74,28,.55);animation:ripple 2.4s ease-out infinite}
+.orb .pr:nth-child(2){animation-delay:.8s}.orb .pr:nth-child(3){animation-delay:1.6s}
+@keyframes ripple{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+@keyframes orbpulse{50%{transform:scale(1.09)}}
+.voxy-head .who b{font-family:'Bricolage Grotesque';font-size:1.25rem;display:block}
+.voxy-head .who .st{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.12em;color:var(--mint);display:flex;align-items:center;gap:6px;margin-top:3px}
+.voxy-head .who .st i{width:7px;height:7px;border-radius:50%;background:var(--mint);animation:pulse2 1.4s infinite}
 @keyframes pulse2{50%{opacity:.3}}
-.engine .eh b{font-family:'Bricolage Grotesque';font-size:1.05rem}
-.e-top{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;position:relative;z-index:2}
-.e-stat{background:rgba(251,247,239,.06);border:1px solid rgba(251,247,239,.1);border-radius:14px;padding:14px}
-.e-stat .k{font-size:.72rem;color:rgba(251,247,239,.55);margin-bottom:6px}
-.e-stat .v{font-family:'Bricolage Grotesque';font-size:1.7rem;font-weight:700;letter-spacing:-.02em;line-height:1}
-.e-stat .d{font-family:'JetBrains Mono';font-size:.66rem;color:var(--mint);margin-top:5px}
-.e-chart{display:flex;align-items:flex-end;gap:7px;height:84px;padding:10px 0;position:relative;z-index:2}
-.e-chart .bar{flex:1;background:rgba(251,247,239,.18);border-radius:5px 5px 0 0;transform:scaleY(0);transform-origin:bottom;transition:transform .9s var(--ease)}
-.e-chart .bar.hot{background:var(--vermilion)}
-.engine.run .e-chart .bar{transform:scaleY(1)}
-.e-chat{margin-top:6px;position:relative;z-index:2;min-height:104px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end}
-.bub{max-width:80%;padding:9px 13px;border-radius:14px;font-size:.84rem;line-height:1.35;opacity:0;transform:translateY(8px)}
+.wave{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;margin:16px 0 4px;position:relative;z-index:2}
+.wave i{width:3px;background:var(--vermilion);border-radius:3px;height:16%;opacity:.85}
+.voxy-panel.run .wave i{animation:wv 1s ease-in-out infinite}
+@keyframes wv{0%,100%{height:14%}50%{height:90%}}
+.v-transcript{position:relative;z-index:2;min-height:150px;display:flex;flex-direction:column;gap:8px;justify-content:flex-end;margin-bottom:16px}
+.bub{max-width:82%;padding:9px 13px;border-radius:14px;font-size:.86rem;line-height:1.38;opacity:0;transform:translateY(8px)}
 .bub.show{opacity:1;transform:none;transition:.4s var(--ease)}
 .bub.in{align-self:flex-start;background:rgba(251,247,239,.1);border-bottom-left-radius:4px}
 .bub.out{align-self:flex-end;background:var(--vermilion);color:#fff;border-bottom-right-radius:4px}
+.bub .nm{display:block;font-family:'JetBrains Mono';font-size:.55rem;letter-spacing:.1em;opacity:.6;margin-bottom:3px}
+.v-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:relative;z-index:2;border-top:1px solid rgba(251,247,239,.12);padding-top:16px}
+.senti{flex:1;min-width:150px}
+.senti .lab{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(251,247,239,.6);margin-bottom:6px}
+.senti .lab b{color:var(--mint)}
+.senti .track{height:6px;border-radius:6px;background:rgba(251,247,239,.12);overflow:hidden}
+.senti .track i{display:block;height:100%;width:8%;background:linear-gradient(90deg,var(--vermilion),var(--mint));border-radius:6px;transition:width 1.2s var(--ease)}
+.lead-tag{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.06em;background:rgba(15,169,104,.16);color:var(--mint);border:1px solid rgba(15,169,104,.4);border-radius:100px;padding:6px 12px;opacity:0;transition:opacity .5s}
+.voxy-panel.qualified .lead-tag{opacity:1}
 
 /* ===== MARQUEE ===== */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;white-space:nowrap;background:var(--paper);position:relative;z-index:2}
@@ -298,7 +333,7 @@ footer{padding:80px 0 36px;border-top:1px solid var(--line);margin-top:110px}
   <a href="#" class="logo">Blinxy<span>.</span></a>
   <div class="nav-links">
     <a href="#services">Services</a>
-    <a href="#engine">Live Demo</a>
+    <a href="#voxy">Meet Voxy</a>
     <a href="#results">Results</a>
     <a href="#process">Process</a>
     <a href="https://cal.com/akshat-kanwal-8ww7y3/15min" class="nav-cta" data-cursor="book" target="_blank">Let's Grow →</a>
@@ -307,7 +342,7 @@ footer{padding:80px 0 36px;border-top:1px solid var(--line);margin-top:110px}
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services">Services</a>
-  <a href="#engine">Live Demo</a>
+  <a href="#voxy">Meet Voxy</a>
   <a href="#results">Results</a>
   <a href="#process">Process</a>
   <a href="https://cal.com/akshat-kanwal-8ww7y3/15min" target="_blank">Let's Grow →</a>
@@ -327,27 +362,25 @@ footer{padding:80px 0 36px;border-top:1px solid var(--line);margin-top:110px}
       <p class="hero-sub">Full-spectrum digital growth — from scroll-stopping content and ROI-first campaigns to the AI agents, booking systems, and dashboards that run your business while you sleep.</p>
       <div class="hero-btns">
         <a href="https://cal.com/akshat-kanwal-8ww7y3/15min" class="btn btn-primary magnetic" data-cursor="book" target="_blank">Get Your Free Audit <span class="arr">→</span></a>
-        <a href="#engine" class="btn btn-ghost magnetic">See It Live</a>
+        <a href="#voxy" class="btn btn-ghost magnetic">Meet Voxy</a>
       </div>
     </div>
 
-    <!-- LIVE GROWTH ENGINE -->
-    <div class="engine" id="engine">
-      <div class="eh">
-        <b>Live Growth Engine</b>
-        <span class="live"><i></i> LIVE</span>
+    <!-- HERO BRAND VISUAL -->
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <div class="badge-ring">
+        <svg class="ring-text" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><path id="bpath" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+          <text><textPath href="#bpath" startOffset="0">WHERE BRANDS BREAK THROUGH ✦ BLINXY ✦ GROW ✦ SCALE ✦ CONVERT ✦ </textPath></text>
+        </svg>
+        <div class="badge-core">
+          <div class="b-mark"><span>b<i>.</i></span></div>
+        </div>
       </div>
-      <div class="e-top">
-        <div class="e-stat"><div class="k">Followers</div><div class="v" id="eFollow">0</div><div class="d" id="eFollowD">▲ +0 today</div></div>
-        <div class="e-stat"><div class="k">Avg. ROAS</div><div class="v" id="eRoas">0.0x</div><div class="d">▲ vs 1.8x before</div></div>
-      </div>
-      <div class="e-chart" id="eChart">
-        <div class="bar" style="--h:.4"></div><div class="bar" style="--h:.6"></div>
-        <div class="bar" style="--h:.5"></div><div class="bar" style="--h:.75"></div>
-        <div class="bar" style="--h:.65"></div><div class="bar" style="--h:.9"></div>
-        <div class="bar hot" style="--h:1"></div>
-      </div>
-      <div class="e-chat" id="eChat"></div>
+      <div class="chip-float c1">📈 <b>5.4x</b>&nbsp;ROAS</div>
+      <div class="chip-float c2">⚡ <b>+340%</b>&nbsp;organic</div>
+      <div class="chip-float c3">🚀 <b>48K</b>&nbsp;followers</div>
     </div>
   </div>
 </header>
@@ -381,6 +414,41 @@ footer{padding:80px 0 36px;border-top:1px solid var(--line);margin-top:110px}
       <div class="card c4 reveal tilt"><div class="glow"></div><div class="inner"><span class="num">08 / 10</span><h3>WhatsApp Ordering &amp; Invoicing</h3><p>Customers order, get invoices, and track deliveries entirely on WhatsApp — zero app downloads.</p><div class="chips"><span class="chip">Order Tracking</span><span class="chip">Auto Invoices</span></div></div></div>
       <div class="card feature c6 reveal tilt"><span class="badge-new">NEW</span><div class="glow"></div><div class="inner"><span class="num">09 / 10</span><h3>Booking &amp; Reservation Systems</h3><p>Custom online booking platforms for turfs, salons, clinics, studios, and events. Real-time slot management, instant confirmations, and online payments — a complete booking flow built for you.</p><div class="chips"><span class="chip">Live Slots</span><span class="chip">Online Payments</span><span class="chip">Auto Confirm</span></div></div></div>
       <div class="card tint-sky c6 reveal tilt"><span class="badge-new">NEW</span><div class="glow"></div><div class="inner"><span class="num">10 / 10</span><h3>Lead Management &amp; CRM Dashboards</h3><p>Every enquiry captured, tracked, and converted from one clean admin dashboard. Custom lead pipelines, follow-up reminders, and live analytics — wired into your booking and ad funnels.</p><div class="chips"><span class="chip">Lead Pipeline</span><span class="chip">Admin Dashboard</span><span class="chip">Live Analytics</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VOXY · AI CALLING AGENT -->
+<section class="sec" id="voxy" style="padding-top:40px">
+  <div class="wrap">
+    <div class="voxy-grid">
+      <div class="reveal">
+        <span class="eyebrow">Flagship · AI Calling Agent</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.8rem);margin-top:18px">Meet <span class="serif-it">Voxy</span> — the agent that never sleeps.</h2>
+        <p style="color:var(--ink-soft);font-size:1.12rem;margin-top:18px;max-width:46ch">Voxy is our AI voice agent that picks up every call, makes the follow-ups your team forgets, and turns conversations into booked appointments — around the clock, in your brand's voice.</p>
+        <ul class="voxy-feats">
+          <li><span class="ic">✓</span><span>Answers inbound &amp; runs outbound calls <b>24/7</b> — no missed leads, ever.</span></li>
+          <li><span class="ic">✓</span><span>Qualifies leads, books slots, and pushes confirmations to WhatsApp.</span></li>
+          <li><span class="ic">✓</span><span>Speaks naturally in English &amp; Hindi, with real-time sentiment read.</span></li>
+        </ul>
+        <a href="https://cal.com/akshat-kanwal-8ww7y3/15min" class="btn btn-primary magnetic" data-cursor="book" target="_blank">Put Voxy on your line <span class="arr">→</span></a>
+      </div>
+
+      <div class="voxy-panel reveal" id="voxyPanel">
+        <div class="voxy-head">
+          <div class="orb"><span class="pr"></span><span class="pr"></span><span class="pr"></span><span class="core"></span></div>
+          <div class="who"><b>Voxy</b><span class="st"><i></i> ON A CALL · 00:18</span></div>
+        </div>
+        <div class="wave" id="voxyWave"></div>
+        <div class="v-transcript" id="voxyChat"></div>
+        <div class="v-foot">
+          <div class="senti">
+            <div class="lab"><span>Caller sentiment</span><b id="sentiVal">Positive</b></div>
+            <div class="track"><i id="sentiBar"></i></div>
+          </div>
+          <span class="lead-tag">● LEAD QUALIFIED</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -513,7 +581,7 @@ footer{padding:80px 0 36px;border-top:1px solid var(--line);margin-top:110px}
       </div>
       <div class="foot-col">
         <h4>Company</h4>
-        <a href="#engine">Live Demo</a><a href="#results">Results</a><a href="#process">Our Process</a><a href="https://cal.com/akshat-kanwal-8ww7y3/15min" target="_blank">Book a Call</a><a href="mailto:contact@blinxy.in">contact@blinxy.in</a>
+        <a href="#voxy">Meet Voxy</a><a href="#results">Results</a><a href="#process">Our Process</a><a href="https://cal.com/akshat-kanwal-8ww7y3/15min" target="_blank">Book a Call</a><a href="mailto:contact@blinxy.in">contact@blinxy.in</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -672,7 +740,7 @@ if(DESK&&!RM)document.querySelectorAll('.tilt').forEach(card=>{
 /* ===== VELOCITY-SKEW MARQUEE ===== */
 if(!RM){
   let last=scrollY,skew=0;
-  const tracks=[document.getElementById('mtrack')];
+  const tracks=[document.getElementById('mskew')];
   addEventListener('scroll',()=>{const v=scrollY-last;last=scrollY;skew=Math.max(-8,Math.min(8,v*.4));},{passive:true});
   (function loop(){skew*=.9;tracks.forEach(t=>{if(t)t.style.transform=`skewX(${skew}deg)`;});requestAnimationFrame(loop)})();
 }
@@ -689,41 +757,41 @@ if(!RM){
   },{passive:true});
 })();
 
-/* ===== LIVE GROWTH ENGINE ===== */
+/* ===== VOXY · AI CALLING AGENT ===== */
 (function(){
-  const engine=document.getElementById('engine');if(!engine)return;
-  const follow=document.getElementById('eFollow'),followD=document.getElementById('eFollowD'),roas=document.getElementById('eRoas'),chat=document.getElementById('eChat');
-  // set bar heights via --h and stagger their grow-in
-  const bars=[...document.querySelectorAll('#eChart .bar')];
-  bars.forEach((b,i)=>{b.style.height=(parseFloat(b.style.getPropertyValue('--h'))*100)+'%';b.style.transitionDelay=(i*0.08)+'s'});
+  const panel=document.getElementById('voxyPanel');if(!panel)return;
+  const chat=document.getElementById('voxyChat'),wave=document.getElementById('voxyWave'),sentiBar=document.getElementById('sentiBar');
+  // build waveform bars
+  const BARS=28;let waveHTML='';
+  for(let i=0;i<BARS;i++)waveHTML+='<i style="animation-delay:'+(i*0.045).toFixed(2)+'s"></i>';
+  wave.innerHTML=waveHTML;
   let started=false;
-  const roll=(el,to,dec,suf,dur)=>{let s=null;const tick=t=>{if(!s)s=t;const p=Math.min((t-s)/dur,1);el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g,',')+(suf||'');if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)};
   const seq=[
-    {c:'in',t:'Hi! Can I book the turf for 7 PM today?'},
-    {c:'out',t:'✅ 7–8 PM slot confirmed. Pay ₹600 to lock it →'},
-    {c:'out',t:'Payment received 🎉 See you at 7!'},
-    {c:'in',t:'Done ✅ Thanks, that was so quick!'}
+    {c:'out',n:'Voxy',t:"Hi! This is Voxy calling from your brand — is now a good time?"},
+    {c:'in',n:'Caller',t:"Yeah, sure — go ahead."},
+    {c:'out',n:'Voxy',t:"Great. I can lock your 7 PM slot for tonight. Shall I confirm it?"},
+    {c:'in',n:'Caller',t:"Yes please, that's perfect!"},
+    {c:'out',n:'Voxy',t:"Done ✅ Confirmation's on its way to your WhatsApp. Talk soon!"}
   ];
+  function paintAll(){chat.innerHTML='';seq.forEach(m=>{const b=document.createElement('div');b.className='bub '+m.c+' show';b.innerHTML='<span class="nm">'+m.n+'</span>'+m.t;chat.appendChild(b)});}
   function runChat(){
     chat.innerHTML='';let i=0;
     const add=()=>{
-      if(i>=seq.length){setTimeout(runChat,2600);return;}
-      const b=document.createElement('div');b.className='bub '+seq[i].c;b.textContent=seq[i].t;chat.appendChild(b);
+      if(i>=seq.length){panel.classList.add('qualified');sentiBar.style.width='92%';setTimeout(()=>{panel.classList.remove('qualified');sentiBar.style.width='8%';runChat();},3200);return;}
+      const m=seq[i];
+      const b=document.createElement('div');b.className='bub '+m.c;b.innerHTML='<span class="nm">'+m.n+'</span>'+m.t;chat.appendChild(b);
       requestAnimationFrame(()=>b.classList.add('show'));
-      i++;setTimeout(add,1300);
+      if(i>=2)sentiBar.style.width=(45+i*15)+'%';
+      i++;setTimeout(add,1450);
     };add();
   }
   new IntersectionObserver(es=>{
     if(es[0].isIntersecting&&!started){
-      started=true;
-      engine.classList.add('run');
-      if(RM){follow.textContent='48,200';roas.textContent='4.8x';chat.innerHTML='';seq.forEach(m=>{const b=document.createElement('div');b.className='bub '+m.c+' show';b.textContent=m.t;chat.appendChild(b)});return;}
-      roll(follow,48200,0,'',1600);roll(roas,4.8,1,'x',1600);
-      let added=0;
-      const live=setInterval(()=>{added+=Math.floor(Math.random()*7)+2;followD.textContent='▲ +'+added+' today';},1800);
-      setTimeout(runChat,800);
+      started=true;panel.classList.add('run');
+      if(RM){paintAll();panel.classList.add('qualified');sentiBar.style.width='92%';return;}
+      setTimeout(runChat,500);
     }
-  },{threshold:.4}).observe(engine);
+  },{threshold:.35}).observe(panel);
 })();
 
 /* ===== SMOOTH ANCHORS ===== */
